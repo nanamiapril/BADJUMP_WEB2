@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BADJUMP</title>
+
+
+
+<!-- 在这里加入像素字体 -->
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <div id="device-shell">
+        <div id="game-container">
+            <canvas id="gameCanvas"></canvas>
+
+            <div id="ui-layer">
+                <div id="score-display">Score: 0</div>
+                <div id="ai-avatar">🎭</div>
+                <div id="ai-subtitle"></div>
+
+                <div id="start-screen">
+                    <canvas id="start-cat-canvas" width="96" height="96"></canvas>
+                    <h1>BADJUMP</h1>
+                    <p>TRY NOT TO FAIL</p>
+                    <button id="start-btn" class="menu-btn">Start Game</button>
+                </div>
+
+             </div>
+
+                <div id="game-over-screen">
+                    <h2>Game Over!</h2>
+                    <p>Final Score: <span id="final-score">0</span></p>
+                    <p id="ai-final-roast"></p>
+                    <button id="restart-btn" class="menu-btn">Play Again</button>
+                    <button id="share-btn" class="menu-btn">Share</button>
+                </div>
+
+                <div id="mobile-controls">
+                    <div id="left-controls">
+                        <button id="left-btn" class="control-btn direction-btn"><span>&lt;</span></button>
+                    </div>
+
+                    <div id="right-controls">
+                        <button id="jump-btn" class="control-btn jump-btn"><span>^</span></button>
+                        <button id="right-btn" class="control-btn direction-btn"><span>&gt;</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/ai_commentary.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/platform.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
