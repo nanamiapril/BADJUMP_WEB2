@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0a1020;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Press Start 2P', monospace;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+#device-shell {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 手机壳 */
+#game-container {
+    position: relative;
+    width: min(390px, 92vw);
+    height: min(844px, 92vh);
+    aspect-ratio: 390 / 844;
+    background: #102a56;
+    border: 6px solid #0b1730;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow:
+        0 0 0 4px #1d2c4f,
+        0 0 0 10px #09101f;
+}
+
+/* 扫描线 + 复古屏幕质感 */
+#game-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.04) 0px,
+            rgba(255,255,255,0.04) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+    pointer-events: none;
+    z-index: 50;
+}
+
+#gameCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+#ui-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+/* HUD */
+#score-display {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-size: 14px;
+    font-weight: 900;
+    color: #ffd54a;
+    text-shadow: 2px 2px 0 #000000;
+    z-index: 10;
+    letter-spacing: 1px;
+    opacity: 0;
+    transition: opacity 0.15s linear;
+}
+
+#ai-avatar {
+    position: absolute;
+    bottom: 92px;
+    right: 18px;
+    font-size: 28px;
+    z-index: 10;
+    filter: none;
+    transition: transform 0.1s steps(2), opacity 0.15s linear;
+    opacity: 0;
+}
+
+#ai-subtitle {
+    position: absolute;
+    bottom: 138px;
+    right: 18px;
+    max-width: 230px;
+    background: #000000;
+    color: #ffffff;
+    border: 3px solid #ffffff;
+    border-radius: 0;
+    padding: 10px 12px;
+    font-size: 10px;
+    line-height: 1.4;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(0);
+    transition: opacity 0.12s linear;
+    z-index: 10;
+    box-shadow: 4px 4px 0 #1e2f5a;
+}
+
+/* 开始页 / 结束页 */
+#start-screen,
+#game-over-screen {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.82);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+    text-align: center;
+    padding: 24px;
+    z-index: 40;
+}
+
+#game-over-screen {
+    display: none;
+}
+
+/* 开始页单独布局 */
+#start-screen {
+    gap: 18px;
+}
+
+/* 开始页小黄猫 */
+#start-cat-canvas {
+    width: 96px;
+    height: 96px;
+    margin-bottom: 10px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    animation: startCatBob 0.9s steps(2) infinite;
+}
+
+@keyframes startCatBob {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(2px); }
+    100% { transform: translateY(0); }
+}
+
+/* 标题 */
+#start-screen h1,
+#game-over-screen h2 {
+    font-size: 26px;
+    white-space: nowrap;
+    letter-spacing: 2px;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    color: #ffffff;
+    text-shadow: 3px 3px 0 #000000;
+}
+
+/* 副标题 */
+#start-screen p,
+#game-over-screen p {
+    font-size: 12px;
+    line-height: 1.6;
+    color: #f3f3f3;
+    margin-bottom: 8px;
+    max-width: 280px;
+    text-shadow: 2px 2px 0 #000000;
+}
+
+/* 开始页副标题单行 */
+#start-screen p {
+    white-space: nowrap;
+    font-size: 10px;
+    margin-bottom: 14px;
+}
+
+/* Game over 吐槽 */
+#ai-final-roast {
+    font-size: 11px;
+    max-width: 260px;
+    line-height: 1.4;
+    word-break: keep-all;
+    color: #ffd84d;
+    text-shadow: 2px 2px #000000;
+    text-transform: uppercase;
+}
+
+/* 像素按钮 */
+.menu-btn {
+    padding: 12px 22px;
+    min-width: 180px;
+    font-size: 12px;
+    font-weight: 900;
+    color: #000000;
+    background: #ffcc33;
+    border: 3px solid #000000;
+    border-radius: 0;
+    cursor: pointer;
+    margin: 6px 0 0;
+    box-shadow: 4px 4px 0 #000000;
+    transition: none;
+    pointer-events: auto;
+}
+
+.menu-btn:hover {
+    background: #ffd95a;
+    transform: none;
+    filter: none;
+}
+
+.menu-btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: 1px 1px 0 #000000;
+}
+
+
+
+/* 小屏真机：全屏 */
+@media (max-width: 480px) {
+    html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: #102a56;
+    }
+
+    body {
+        min-height: 100dvh;
+    }
+
+    #device-shell {
+        width: 100vw;
+        height: 100dvh;
+    }
+
+    #game-container {
+        width: 100vw;
+        height: 100dvh;
+        aspect-ratio: auto;
+        border: none;
+        box-shadow: none;
+    }
+
+    #game-container::after {
+        display: none;
+    }
+}
