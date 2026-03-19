@@ -12,15 +12,13 @@ Built with **pure HTML + CSS + JavaScript**.
 
 ## 🎮 Play Online
 
-👉 https://nanamiapril.github.io/BADJUMP/
+👉 https://nanamiapril.github.io/BADJUMP_WEB2/
 
 Playable directly in the browser.
 
 Supports:
 
 - Desktop
-- Mobile
-- Touch controls
 
 No install required.
 
