@@ -6,13 +6,13 @@ let pendingVoiceText = null;
 
 const CommentLibrary = {
     game_start: [
-        "Alright. Be bad.",
+        "Alright. Show me what you got.",
         "Go on. Flop.",
         "Show me failure.",
         "Let's waste talent.",
-        "Okay. Ruin this.",
+        "Okay, here we go.",
         "Try not to choke.",
-        "Start badly.",
+        "Nice start.",
         "Disappoint me.",
         "Let's see the mess.",
         "Time for errors."
